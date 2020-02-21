@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/ff18e59fe4.js" crossorigin="anonymous"></script>
+    <title>Slider</title>
+    <script>
+        $(document).ready(function(){
+            var data = $("#slider").children();
+            var data_ = [];
+            var actual = 0;
+            for(i=0;i<data.length;i++){
+                data_.push(data[i].id);
+                $("#"+data_[i]).css("display","none");
+                $("#"+data_[i]).animate({opacity:'0'});
+            }
+            $("#"+data_[0]).css("display","inline"); 
+            $("#"+data_[0]).animate({opacity:'1'},"slow");
+          
+            // funciones click
+            $("#next").click(function(){
+                actual++;
+                if(actual==data_.length)
+                    actual=0;
+                for(i=0;i<data_.length;i++){
+                    if(i!=actual){
+                        $("#"+data_[i]).animate({opacity:'0'},1000);
+                        $("#"+data_[i]).css("display","none");
+                    }
+                    else{
+                        $("#"+data_[i]).css("display","inline");
+                        $("#"+data_[i]).animate({opacity:'1'},1000);
+                    }
+                }
+            });
+            $("#prev").click(function(){
+                if(actual==0)
+                   actual = data_.length-1;
+                else{
+                    actual--;
+                }
+                for(i=0;i<data_.length;i++){
+                    if(i!=actual){
+                        $("#"+data_[i]).animate({opacity:'0'},1000);
+                        $("#"+data_[i]).css("display","none");
+                    }
+                    else{
+                        $("#"+data_[i]).css("display","inline");
+                        $("#"+data_[i]).animate({opacity:'1'},1000);
+                    }
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="row data">
+        <div class="col-md-3"></div>
+        <div class="col-md-6  text-center telefono">
+            <i class="fas fa-phone"></i>
+            <h3>+569 93677479</h3>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row nav">
+        <div class="col-md-2">
+            <div class="logo">
+                <img src="img/logo.png" width="76%" alt="">
+            </div>
+        </div>
+        <div class="col-md-5"></div>
+        <div id="but">
+            <h3><a href=""> INICIO  | </a></h3>
+            <h3><a href=""> SHOW | </a></h3>
+            <h3><a href=""> MAGIA | </a></h3>
+            <h3><a href=""> TEATRO | </a></h3>
+            <h3><a href=""> MALABARES   </a></h3>
+        </div>
+    </div>
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" id="contain">
+                <div>
+                    <button id="prev" class="btn"><</button>
+                </div>
+                <div id="slider"> 
+                    <img src="img/c1.jpg" alt="" class="img-thumbnail" id="012">
+                    <img src="img/c2.jpg" alt="" class="img-thumbnail" id="112">
+                    <img src="img/c3.jpg" alt="" class="img-thumbnail" id="211">
+                </div>
+                <div>
+                    <button id="next" class="btn">></button>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="row container-info">
+        <div class="col-md-12">
+         <img src="img/logoconejonegro.png" width="10%" alt="">
+        </div>
+    </div>
+
+  
+</body>
+</html>
