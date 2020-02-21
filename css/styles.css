@@ -1,0 +1,21 @@
+*{
+    font-family:  "Times New Roman", Times, serif;
+}
+img{
+    width: 700px;
+    height: 300px;
+    border: 8px solid rgba(170, 223, 117, 0.3);
+}
+#slider{
+    width: 100%;
+    text-align: center;
+    height: 320px;
+}
+#controls{
+    text-align: center;
+}
+button{
+    border:none;
+    background-color: rgba(170, 223, 117, 0.3);
+    font-size: 30px;
+}
